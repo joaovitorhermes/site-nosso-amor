@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>2 Anos com Você 🎧</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ANIMAÇÕES -->
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #121212;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* TELA INICIAL */
+    .intro {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle, #1db954, #121212 70%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      text-align: center;
+      cursor: pointer;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .intro h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .intro p {
+      font-size: 18px;
+      opacity: 0.9;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* SITE */
+    .container {
+      display: flex;
+      min-height: 100vh;
+      animation: slideUp 1s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: #000;
+      padding: 20px;
+    }
+
+    .sidebar h2 {
+      color: #1db954;
+    }
+
+    .content {
+      flex: 1;
+      padding: 30px;
+      background: linear-gradient(180deg, #1f1f1f, #121212);
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .header img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .header h1 {
+      font-size: 42px;
+      margin: 0;
+    }
+
+    .section {
+      margin-top: 40px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .photos {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 15px;
+    }
+
+    .photos img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    iframe {
+      border-radius: 12px;
+      margin-top: 10px;
+    }
+
+    .text-box {
+      background-color: #181818;
+      padding: 20px;
+      border-radius: 10px;
+      line-height: 1.7;
+    }
+
+    .contador {
+      margin-top: 15px;
+      color: #1db954;
+      font-weight: bold;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 768px) {
+      .container { flex-direction: column; }
+      .sidebar { width: 100%; text-align: center; }
+      .header { justify-content: center; text-align: center; }
+      .header img { width: 140px; height: 140px; }
+      .header h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TELA DE SURPRESA -->
+<div class="intro" onclick="startSite()">
+  <h1>Preparei algo especial pra você 💚</h1>
+  <p>Clique para começar 🎧</p>
+</div>
+
+<!-- SITE -->
+<div class="container hidden" id="site">
+  <aside class="sidebar">
+    <h2>Spotify Love</h2>
+  </aside>
+
+  <main class="content">
+    <div class="header">
+      <img src="foto-capa.jpg" alt="Foto do casal" />
+      <div>
+        <p>Playlist Especial</p>
+        <h1>2 Anos com Você</h1>
+        <p>Desde 08/02/2024 💕</p>
+        <div class="contador" id="contador"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📸 Nossos Momentos</h2>
+      <div class="photos">
+        <img src="foto1.jpg" />
+        <img src="foto2.jpg" />
+        <img src="foto3.jpg" />
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🎵 Nossa Playlist</h2>
+      <!-- SUBSTITUA O LINK ABAIXO PELO DA PLAYLIST DO SPOTIFY -->
+      <iframe style="border-radius:12px" src="https://open.spotify.com/playlist/0J0h5b4xbuASyftArknnYE?si=HXlxptM4Tfqx8j-EbD3TDQ&pi=FWaZraC_TuO5b" width="100%" height="380" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    <div class="section">
+      <h2>✍️ Para Você</h2>
+      <div class="text-box">
+        <p>
+          Amor, desde o dia 08 de fevereiro de 2024 minha vida ganhou um novo
+          sentido. Cada música aqui toca um pedaço da nossa história e  me faz lembrar você, cada foto
+          guarda um momento que jamais esquecerei. Obrigado por ser meu amor,
+          minha parceira e minha melhor escolha todos os dias.
+        </p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+  function startSite() {
+    document.querySelector('.intro').classList.add('hidden');
+    document.getElementById('site').classList.remove('hidden');
+  }
+
+  function atualizarContador() {
+    const inicio = new Date('2024-02-08');
+    const agora = new Date();
+
+    const diff = agora - inicio;
+    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    document.getElementById('contador').innerText = `Juntos há ${dias} dias 💚`;
+  }
+
+  atualizarContador();
+</script>
+
+</body>
+</html>
