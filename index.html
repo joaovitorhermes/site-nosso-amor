@@ -2,106 +2,165 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>2 Anos com Você 🎧</title>
+<title>2 Anos com Você 💚</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-body{
-  font-family:'Inter',sans-serif;
-  background:#121212;
-  color:#fff;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(180deg, #121212, #000);
+  color: #fff;
 }
-
-.hidden{display:none}
 
 /* INTRO */
-#intro{
-  position:fixed;
-  inset:0;
-  background:radial-gradient(circle,#1db954,#000 70%);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  z-index:10;
+.intro {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, #1db954, #121212 70%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 1000;
 }
 
-#intro button{
-  padding:14px 36px;
-  border-radius:30px;
-  border:none;
-  background:#1db954;
-  font-weight:700;
-  cursor:pointer;
+.intro h1 {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.intro p {
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.intro button {
+  background: #1db954;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 /* SITE */
-.container{display:flex;min-height:100vh}
+.hidden { display: none; }
 
-.sidebar{
-  width:220px;
-  background:#000;
-  padding:20px;
+.main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 32px 20px;
 }
 
-.content{
-  flex:1;
-  padding:30px;
-  background:linear-gradient(180deg,#1f1f1f,#121212);
+/* HEADER */
+.header {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.header{
-  display:flex;
-  gap:24px;
-  flex-wrap:wrap;
-  align-items:center;
+.header img {
+  width: 180px;
+  height: 180px;
+  border-radius: 12px;
+  object-fit: cover;
 }
 
-.header img{
-  width:180px;
-  height:180px;
-  object-fit:cover;
-  border-radius:12px;
+.header h1 {
+  font-size: 40px;
 }
 
-.section{margin-top:40px}
-
-.photos{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
-  gap:15px;
+.header p {
+  color: #b3b3b3;
 }
 
-.photos img{
-  width:100%;
-  border-radius:12px;
-  cursor:pointer;
-  transition:.3s;
+.contador {
+  color: #1db954;
+  margin-top: 6px;
+  font-weight: bold;
 }
 
-.photos img:hover{transform:scale(1.05)}
-
-iframe{
-  width:100%;
-  height:380px;
-  border-radius:12px;
-  border:none;
+/* SEÇÕES */
+section {
+  margin-top: 50px;
 }
 
-.text-box{
-  background:#181818;
-  padding:20px;
-  border-radius:12px;
+section h2 {
+  margin-bottom: 16px;
 }
 
-@media(max-width:768px){
-  .container{flex-direction:column}
-  .sidebar{width:100%}
+/* PLAYLIST */
+.spotify {
+  background: linear-gradient(180deg, #1a1a1a, #121212);
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(29,185,84,.3);
+}
+
+/* GALERIA */
+.photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.photos img {
+  width: 100%;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform .3s;
+}
+
+.photos img:hover {
+  transform: scale(1.05);
+}
+
+/* MODAL FOTO */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  text-align: center;
+  max-width: 90%;
+}
+
+.modal img {
+  max-width: 100%;
+  border-radius: 12px;
+}
+
+.modal p {
+  margin-top: 12px;
+  color: #ccc;
+}
+
+.modal button {
+  margin-top: 20px;
+  background: #1db954;
+  border: none;
+  padding: 8px 22px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .header {
+    justify-content: center;
+    text-align: center;
+  }
 }
 </style>
 </head>
@@ -109,82 +168,92 @@ iframe{
 <body>
 
 <!-- INTRO -->
-<div id="intro">
-  <h1>Preparei algo especial 💚</h1>
+<div class="intro" id="intro">
+  <h1>Preparei algo especial pra você 💚</h1>
   <p>Clique para começar 🎧</p>
   <button onclick="startSite()">Começar</button>
 </div>
 
 <!-- SITE -->
-<div class="container hidden" id="site">
-  <aside class="sidebar">
-    <h2>Spotify Love</h2>
-  </aside>
+<div class="main hidden" id="site">
 
-  <main class="content">
-    <div class="header">
-      <img src="foto-capa.jpg">
-      <div>
-        <h1>2 Anos com Você</h1>
-        <p>Desde 08/02/2024 💕</p>
-        <div id="contador"></div>
-      </div>
+  <div class="header">
+    <img src="foto-capa.jpg" alt="Foto do casal">
+    <div>
+      <p>Playlist Especial</p>
+      <h1>2 Anos com Você</h1>
+      <p>Desde 08/02/2024 💕</p>
+      <div class="contador" id="contador"></div>
     </div>
+  </div>
 
-    <div class="section">
-      <h2>📸 Nossos Momentos</h2>
-      <div class="photos">
-        <img src="foto1.jpg" data-texto="Nosso primeiro momento 💕" onclick="openPhoto(this)">
-        <img src="foto2.jpg" data-texto="Sorrisos que eu amo 💚" onclick="openPhoto(this)">
-      </div>
+  <!-- PLAYLIST -->
+  <section>
+    <h2>🎵 Nossa Playlist</h2>
+    <div class="spotify">
+      <iframe
+        src="https://open.spotify.com/embed/playlist/0J0h5b4xbuASyftArknnYE"
+        width="100%"
+        height="380"
+        frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+      </iframe>
     </div>
+  </section>
 
-    <div class="section">
-      <h2>🎵 Nossa Playlist</h2>
-      <iframe src="https://open.spotify.com/embed/playlist/0J0h5b4xbuASyftArknnYE?si=kqjAcLs2S5utIBfrmEJFcQ&pi=zxC4Ek1uRw2PB"></iframe>
+  <!-- FOTOS -->
+  <section>
+    <h2>📸 Nossos Momentos</h2>
+    <div class="photos">
+      <img src="foto1.jpg" onclick="openPhoto(this, 'Nosso primeiro momento juntos 💚')">
+      <img src="foto2.jpg" onclick="openPhoto(this, 'Um dia inesquecível ao seu lado ✨')">
+      <img src="foto3.jpg" onclick="openPhoto(this, 'Mais um capítulo da nossa história 💕')">
     </div>
+  </section>
 
-    <div class="section">
-      <h2>✍️ Para Você</h2>
-      <div class="text-box">
-        Cada música e cada foto aqui representam o quanto você é especial 💚
-      </div>
-    </div>
-  </main>
+  <!-- TEXTO -->
+  <section>
+    <h2>✍️ Para Você</h2>
+    <p style="line-height:1.7; color:#ccc;">
+      Amor, cada música aqui representa um pedaço da nossa história.
+      Obrigado por ser meu amor, minha parceira e minha melhor escolha todos os dias 💚
+    </p>
+  </section>
+
+</div>
+
+<!-- MODAL FOTO -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <img id="modalImg">
+    <p id="modalText"></p>
+    <button onclick="closePhoto()">Fechar</button>
+  </div>
 </div>
 
 <script>
-function startSite(){
-  document.getElementById('intro').remove();
+function startSite() {
+  document.getElementById('intro').classList.add('hidden');
   document.getElementById('site').classList.remove('hidden');
 }
 
-function atualizarContador(){
-  const inicio=new Date('2024-02-08');
-  const agora=new Date();
-  const dias=Math.floor((agora-inicio)/(1000*60*60*24));
-  document.getElementById('contador').innerText=`Juntos há ${dias} dias 💚`;
+function atualizarContador() {
+  const inicio = new Date('2024-02-08');
+  const hoje = new Date();
+  const dias = Math.floor((hoje - inicio) / (1000 * 60 * 60 * 24));
+  document.getElementById('contador').innerText = `Juntos há ${dias} dias 💚`;
 }
 atualizarContador();
 
-/* MODAL DINÂMICO */
-function openPhoto(img){
-  const modal=document.createElement('div');
-  modal.style.cssText=`
-    position:fixed;inset:0;background:rgba(0,0,0,.9);
-    display:flex;align-items:center;justify-content:center;
-    z-index:9999;
-  `;
-  modal.innerHTML=`
-    <div style="text-align:center;position:relative">
-      <span style="position:absolute;top:-20px;right:-20px;
-      font-size:30px;color:#1db954;cursor:pointer">✕</span>
-      <img src="${img.src}" style="max-width:90vw;max-height:70vh;border-radius:12px">
-      <p style="margin-top:12px">${img.dataset.texto}</p>
-    </div>
-  `;
-  modal.onclick=()=>modal.remove();
-  document.body.appendChild(modal);
+function openPhoto(img, text) {
+  document.getElementById('modalImg').src = img.src;
+  document.getElementById('modalText').innerText = text;
+  document.getElementById('modal').style.display = 'flex';
+}
+
+function closePhoto() {
+  document.getElementById('modal').style.display = 'none';
 }
 </script>
 
