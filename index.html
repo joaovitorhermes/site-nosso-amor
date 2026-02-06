@@ -227,8 +227,8 @@ section h2 {
 </div>
 
 <!-- MODAL FOTO -->
-<div class="modal" id="modal">
-  <div class="modal-content">
+<div class="modal" id="modal" onclick="closePhoto()">
+  <div class="modal-content" onclick="event.stopPropagation()">
     <img id="modalImg">
     <p id="modalText"></p>
     <button onclick="closePhoto()">Fechar</button>
@@ -262,5 +262,6 @@ function closePhoto() {
 
 </body>
 </html>
+
 
 
